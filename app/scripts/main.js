@@ -1,6 +1,8 @@
 var runApp = function() {
   'use strict';
 
+  window.app = new App();
+
   var getLocation = function(callback) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(callback);
@@ -72,5 +74,8 @@ if(window.cordova){
 }
 else{
 	console.log('running on browser');
-  loadMaps();
+	$(document).ready(function(){
+		console.log('document is ready');
+		loadMaps();
+	});
 }
