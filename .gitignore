@@ -4,3 +4,6 @@ dist
 bower_components
 app/scripts/config.js
 .DS_Store
+platforms/*
+plugins/*
+www/*
