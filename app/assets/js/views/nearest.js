@@ -49,6 +49,8 @@ window.NearestView = Backbone.View.extend({
 
 	render: function(){
 		
+	
+		
 		
 		this.getLocation(function(position) {
 			    var pos = new google.maps.LatLng(

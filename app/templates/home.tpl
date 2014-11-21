@@ -1,8 +1,10 @@
-<div>
-	<p>
-		Home page
-	</p>
-	<p>
-		<a href="#nearest">Find nearest cafes</a>
-	</p>
-</div>
+	    <div class="lines">
+		    <div class="lines--red-white"></div>
+		    <div class="lines--blue-blue"></div>
+	    </div>
+	    	<h1 class="branding"><img src="assets/images/fixie-logo.svg"></h1>
+	    	<h2 class="strapline">find your caffeine fix<br>on the road</h2>
+	    	<div class="actions">
+		    	<a href="#" class="btn btn--red"><span class="icon-search"></span>Search for a café</a>
+		    	<a href="#" class="btn btn--blue"><span class="icon-star"></span>Rate a café</a>	   		    	
+	    	</div>
