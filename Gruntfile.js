@@ -315,7 +315,7 @@ module.exports = function (grunt) {
         dot: true,
         cwd: 'dist',
         dest: 'www',
-        src: '*'
+        src: '**'
       }
     },
 
