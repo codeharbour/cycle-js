@@ -7,7 +7,7 @@ bower install
 cordova platform add android
 cordova plugin add org.apache.cordova.geolocatio
 
-Create app/scripts/config.js from app/scripts/config_example.js and fill in fields.
+Create app/assets/js/config.js from app/assets/js/config_example.js and fill in fields.
 
 # Building
 

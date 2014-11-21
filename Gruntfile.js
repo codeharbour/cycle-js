@@ -35,7 +35,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        files: ['<%= config.app %>/assets/js/{,*/}*.js'],
         tasks: ['jshint'],
         options: {
           livereload: true
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
+        files: ['<%= config.app %>/assets/css/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       livereload: {
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
         files: [
           '<%= config.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '<%= config.app %>/images/{,*/}*'
+          '<%= config.app %>/assets/images/{,*/}*'
         ]
       }
     },
@@ -129,8 +129,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
+        '<%= config.app %>/assets/js/{,*/}*.js',
+        '!<%= config.app %>/assets/js/vendor/*',
         'test/spec/{,*/}*.js'
       ]
     },
@@ -174,10 +174,10 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= config.dist %>/scripts/{,*/}*.js',
-            '<%= config.dist %>/styles/{,*/}*.css',
-            '<%= config.dist %>/images/{,*/}*.*',
-            '<%= config.dist %>/styles/fonts/{,*/}*.*',
+            '<%= config.dist %>/assets/js/{,*/}*.js',
+            '<%= config.dist %>/assets/css/{,*/}*.css',
+            '<%= config.dist %>/assets/images/{,*/}*.*',
+            '<%= config.dist %>/assets/fonts/{,*/}*.*',
             '<%= config.dist %>/*.{ico,png}'
           ]
         }
@@ -199,12 +199,12 @@ module.exports = function (grunt) {
       options: {
         assetsDirs: [
           '<%= config.dist %>',
-          '<%= config.dist %>/images',
-          '<%= config.dist %>/styles'
+          '<%= config.dist %>/assets/images',
+          '<%= config.dist %>/assets/css'
         ]
       },
       html: ['<%= config.dist %>/{,*/}*.html'],
-      css: ['<%= config.dist %>/styles/{,*/}*.css']
+      css: ['<%= config.dist %>/assets/css/{,*/}*.css']
     },
 
     // The following *-min tasks produce minified files in the dist folder
@@ -212,9 +212,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/images',
+          cwd: '<%= config.app %>/assets/images',
           src: '{,*/}*.{gif,jpeg,jpg,png}',
-          dest: '<%= config.dist %>/images'
+          dest: '<%= config.dist %>/assets/images'
         }]
       }
     },
@@ -223,9 +223,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/images',
+          cwd: '<%= config.app %>/assets/images',
           src: '{,*/}*.svg',
-          dest: '<%= config.dist %>/images'
+          dest: '<%= config.dist %>/assets/images'
         }]
       }
     },
@@ -288,9 +288,9 @@ module.exports = function (grunt) {
           dest: '<%= config.dist %>',
           src: [
             '*.{ico,png,txt}',
-            'images/{,*/}*.webp',
+            'assets/images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
+            'assets/fonts/{,*/}*.*'
           ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
@@ -306,8 +306,8 @@ module.exports = function (grunt) {
       styles: {
         expand: true,
         dot: true,
-        cwd: '<%= config.app %>/styles',
-        dest: '.tmp/styles/',
+        cwd: '<%= config.app %>/assets/css',
+        dest: '.tmp/assets/styles/',
         src: '{,*/}*.css'
       },
       cordova: {
@@ -342,7 +342,7 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          "app/scripts/templates.js": ["app/templates/**/*.tpl"]
+          "app/assets/js/templates.js": ["app/templates/**/*.tpl"]
         }
       }
     }
