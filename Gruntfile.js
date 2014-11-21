@@ -396,6 +396,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('cordova', [
+    'build',
     'copy:cordova'
   ]);
 };
