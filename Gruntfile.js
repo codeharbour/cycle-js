@@ -309,6 +309,13 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      cordova: {
+        expand: true,
+        dot: true,
+        cwd: 'dist',
+        dest: 'www',
+        src: '*'
       }
     },
 
@@ -386,5 +393,9 @@ module.exports = function (grunt) {
     'newer:jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('cordova', [
+    'copy:cordova'
   ]);
 };
