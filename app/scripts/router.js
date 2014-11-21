@@ -1,7 +1,8 @@
 window.Router = Backbone.Router.extend({
 
 	routes: {
-		"": "home"
+		'': 'home',
+		'nearest': 'nearest'
 	},
 
 	initialize: function(options){
@@ -17,5 +18,15 @@ window.Router = Backbone.Router.extend({
 			});
 		}
 		this._homeView.render();
+	},
+
+	nearest: function(){
+		console.log('in nearest route');
+		if(!this._nearestView){
+			this._nearestView = new NearestView({
+				el: '#app'
+			});
+		}
+		this._nearestView.render();
 	}
 });
