@@ -332,7 +332,21 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    jst: {
+      compile: {
+        options: {
+          templateSettings: {
+            interpolate : /\{\{(.+?)\}\}/g
+          }
+        },
+        files: {
+          "app/scripts/templates.js": ["app/templates/**/*.tpl"]
+        }
+      }
     }
+
   });
 
 
@@ -346,6 +360,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'jst',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -376,6 +391,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'jst',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

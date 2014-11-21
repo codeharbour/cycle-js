@@ -4,6 +4,6 @@ window.App = Parse.View.extend({
 		console.log('starting app');
 		
 		this.router = new Router(this);
-		Parse.history.start();
+		Backbone.history.start();
 	}
 });

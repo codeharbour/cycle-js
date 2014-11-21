@@ -7,3 +7,4 @@ app/scripts/config.js
 platforms/*
 plugins/*
 www/*
+app/scripts/templates.js
