@@ -58,12 +58,19 @@ var runApp = function() {
   });
 };
 
+var loadMaps = function() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+    'callback=runApp&key=' + window.config.GOOGLE_API_KEY;
+    document.body.appendChild(script);
+};
 
 if(window.cordova){
 	console.log('running on device');
-	document.addEventListener("deviceready", runApp, false);
+	document.addEventListener("deviceready", loadMaps, false);
 }
 else{
 	console.log('running on browser');
-	runApp();
+  loadMaps();
 }
