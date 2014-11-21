@@ -2,7 +2,8 @@ node_modules
 dist
 .tmp
 bower_components
+app/scripts/config.js
+.DS_Store
 platforms/*
 plugins/*
 www/*
-
