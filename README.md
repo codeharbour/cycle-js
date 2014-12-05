@@ -15,10 +15,15 @@ Create app/scripts/config.js from app/scripts/config_example.js and fill in fiel
     grunt cordova
     cordova run android
 
-#deploying site
+# deploying site
 
 
 Update config with a valid key for the remote site’s domain.
 
     grunt build
     divshot push --app fixie-app
+
+
+# logout
+
+    window.localStorage.clear()
