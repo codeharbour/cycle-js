@@ -1,4 +1,10 @@
-<div>
+<div class="wrap">
+
+	<header class="site-header">
+		<h1 class="branding"><a href="index.html"><img src="images/fixie-logo.svg"></a></h1>
+		<a href="index.html" class="home-link" title="return to home screen"><span class="icon-home"></span></a>
+	</header>
+
 	<p>
 		Nearest cafes
 	</p>
