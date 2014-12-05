@@ -2,31 +2,61 @@ window.Router = Backbone.Router.extend({
 
 	routes: {
 		'': 'home',
-		'nearest': 'nearest'
+		'nearest': 'nearest',
+		'user/loginForm': 'userLoginForm',
+		'user/login': 'userLogin',
+		'user/signUpForm': 'userSignUpForm',
+		'user/signUp': 'userSignUp'
 	},
 
 	initialize: function(options){
 		this.app = options.app;
-		Parse.Router.prototype.initialize.apply(this, arguments);
+		Backbone.Router.prototype.initialize.apply(this, arguments);
 	},
-
+	
 	home: function(){
 		console.log('in home route');
 		if(!this._homeView){
 			this._homeView = new HomeView({
-				el: '#app'
+				el: '#app #home'
 			});
 		}
-		this._homeView.render();
+		this.app.switchPage(this._homeView);
 	},
 
 	nearest: function(){
 		console.log('in nearest route');
 		if(!this._nearestView){
 			this._nearestView = new NearestView({
-				el: '#app'
+				el: '#app #nearest'
 			});
 		}
-		this._nearestView.render();
-	}
+		this.app.switchPage(this._nearestView);
+	},
+
+	userLoginForm: function(){
+		console.log('in user login form route');
+		if(!this._userLoginFormView){
+			this._userLoginFormView = new UserLoginFormView({
+				el: '#app #userLoginForm',
+				router: this
+			});
+		}
+		this.app.switchPage(this._userLoginFormView);
+	},
+	
+	userLogin: function(){
+		console.log('in user login route');
+	},
+	
+	userSignUpForm: function(){
+		console.log('in user sign up form route');
+		if(!this._userSignUpFormView){
+			this._userSignUpFormView = new UserSignUpFormView({
+				el: '#app #userSignUpForm'
+			});
+		}
+		this.app.switchPage(this._userSignUpFormView);
+	},
+
 });

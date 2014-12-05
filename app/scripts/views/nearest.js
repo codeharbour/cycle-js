@@ -27,7 +27,7 @@ window.NearestView = Backbone.View.extend({
 	addPlaces: function() {
 		console.log('addPlaces()');
 		var instance = this;
-	    var Place = Parse.Object.extend("Place");
+	    var Place = PlaceModel;
 	    var query = new Parse.Query(Place);
 
 	    query.find({
@@ -84,7 +84,8 @@ window.NearestView = Backbone.View.extend({
 	},
 
 	render: function(){
-		this.$el.html(this.template());
+		this.$el.html(this.template(
+		));
 		this.loadMap();
 		return this;
 	}
