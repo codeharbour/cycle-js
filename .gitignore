@@ -9,4 +9,4 @@ www/*
 app/scripts/config.js
 app/scripts/templates.js
 .divshot-cache
-
+.settings

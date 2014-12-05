@@ -4,6 +4,7 @@ window.Router = Backbone.Router.extend({
 		'': 'home',
 		'nearest': 'nearest',
 		'rate': 'rate',
+		'place/:id': 'place',
 		'user/loginForm': 'userLoginForm',
 		'user/login': 'userLogin',
 		'user/signUpForm': 'userSignUpForm',
@@ -42,7 +43,25 @@ window.Router = Backbone.Router.extend({
 				el: '#app #rate'
 			});
 		}
-		this.app.switchPage(this._rateView);
+
+		// User's location
+		var currentUser = UserModel.current();
+		var userGeoPoint = currentUser.get("location");
+		console.log(userGeoPoint);
+		// Create a query for places
+		var query = new Parse.Query(PlaceModel);
+		// Interested in locations near user.
+		query.near("location", userGeoPoint);
+		// Limit what could be a lot of points.
+		query.limit(5);
+		// Final list of objects
+		var instance = this;
+		query.find({
+			success: function(places){
+				instance._rateView.setNearby(places);
+				instance.app.switchPage(instance._rateView);
+			}
+		});
 	},
 
 	userLoginForm: function(){
@@ -69,5 +88,26 @@ window.Router = Backbone.Router.extend({
 		}
 		this.app.switchPage(this._userSignUpFormView);
 	},
+
+	place: function(placeId){
+		console.log('in place route: ', placeId);
+		//TODO implement caching here for offline usage
+		var query = new Parse.Query(PlaceModel);
+		query.get(placeId, {
+			success: function(place){
+				// The object was retrieved successfully.
+				this._placeView = new PlaceView({
+					el: '#app #place',
+					model: place
+				});
+				this.app.switchPage(this._placeView);
+			},
+			error: function(object, error){
+				// The object was not retrieved successfully.
+				// error is a Parse.Error with an error code and message.
+				Device.alert("Error: " + error.code + " " + error.message);
+			}
+		});
+	}
 
 });

@@ -2,7 +2,7 @@
 
 	<header class="site-header">
 		<h1 class="branding"><a href="index.html"><img src="images/fixie-logo.svg"></a></h1>
-		<a href="index.html" class="home-link" title="return to home screen"><span class="icon-home"></span></a>
+		<a href="#" class="home-link" title="return to home screen"><span class="icon-home"></span></a>
 	</header>
 
 	<div class="centered">
@@ -13,11 +13,15 @@
 
 		<% if(nearby.length){ %>
 
-			<% _.each(nearby, function(item){ %>
+			<p>
 
-				<a href="#cafe/rate" class="btn btn--blue">Old Betty's</a>
+				<% _.each(nearby, function(item){ %>
 
-			<% }); %>
+					<a href="#place/<%- item.id %>" class="btn btn--blue"><%- item.get('name') %></a>
+
+				<% }); %>
+
+			</p>
 
 		<% }else{ %>
 
