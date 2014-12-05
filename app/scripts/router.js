@@ -4,7 +4,7 @@ window.Router = Backbone.Router.extend({
 		'': 'home',
 		'nearest': 'nearest',
 		'rate': 'rate',
-		'place/:id': 'place',
+		'place/show/:id': 'place',
 		'user/loginForm': 'userLoginForm',
 		'user/login': 'userLogin',
 		'user/signUpForm': 'userSignUpForm',
@@ -44,23 +44,24 @@ window.Router = Backbone.Router.extend({
 			});
 		}
 
-		// User's location
-		var currentUser = UserModel.current();
-		var userGeoPoint = currentUser.get("location");
-		console.log(userGeoPoint);
-		// Create a query for places
-		var query = new Parse.Query(PlaceModel);
-		// Interested in locations near user.
-		query.near("location", userGeoPoint);
-		// Limit what could be a lot of points.
-		query.limit(5);
-		// Final list of objects
 		var instance = this;
-		query.find({
-			success: function(places){
-				instance._rateView.setNearby(places);
-				instance.app.switchPage(instance._rateView);
-			}
+		Device.getLocation(function(position){	// User's location
+			var userGeoPoint = new Parse.GeoPoint({latitude: position.coords.latitude, longitude: position.coords.longitude});
+			console.log(userGeoPoint);
+			// Create a query for places
+			var query = new Parse.Query(PlaceModel);
+			// Interested in locations near user.
+			query.withinKilometers("location", userGeoPoint, 0.1);
+			// Final list of objects
+			query.find({
+				success: function(places){
+					instance._rateView.setNearby(places);
+					instance.app.switchPage(instance._rateView);
+				},
+				error: function(object, error){
+					Device.alert("Error: " + error.code + " " + error.message);
+				}
+			});
 		});
 	},
 

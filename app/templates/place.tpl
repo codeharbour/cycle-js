@@ -6,7 +6,7 @@
 
 	<section class="content">
 
-		<h1>Old Betty's</h1>
+		<h1><%- model.get('name') %></h1>
 
 		<div class="form">
 

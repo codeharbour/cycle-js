@@ -16,7 +16,7 @@ window.NearestView = Backbone.View.extend({
 	addLocationToMap: function(){
 		console.log('addLocationToMap()');
 		var instance = this;
-		this.getLocation(function(position){
+		Device.getLocation(function(position){
 			instance.drawMap(position);
 		});
 	},
@@ -53,14 +53,6 @@ window.NearestView = Backbone.View.extend({
           title: placeName
         });
 		
-	},
-
-	getLocation: function(callback) {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(callback);
-		} else {
-			alert("Geolocation is not supported by this browser.");
-		}
 	},
 
 	drawMap: function(position){

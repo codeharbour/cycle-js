@@ -9,15 +9,13 @@
 
 		<h1>Where are you right now?</h1>
 
-		<!-- If there are cafés nearby -->
-
 		<% if(nearby.length){ %>
 
 			<p>
 
 				<% _.each(nearby, function(item){ %>
 
-					<a href="#place/<%- item.id %>" class="btn btn--blue"><%- item.get('name') %></a>
+					<a href="#place/show/<%- item.id %>" class="btn btn--blue"><%- item.get('name') %></a>
 
 				<% }); %>
 
@@ -29,7 +27,7 @@
 
 		<% } %>
 
-		<a href="/add.html" class="btn btn--red">Add somewhere new at this location</a>
+		<a href="#place/add" class="btn btn--red">Add somewhere new at this location</a>
 
 	</div>
 

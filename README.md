@@ -27,3 +27,17 @@ Update config with a valid key for the remote site’s domain.
 # logout
 
     window.localStorage.clear()
+
+# todo
+
+* Finish nearest cafe page
+* Add cafe functionality
+
+# bugs
+
+* All cafes are shown on the nearest map
+* No caching of places for better mobile data usage
+* No form validation
+* Places and ratings should be stored for offline use.
+* Fix JST build task
+* Resolve some of the jsint warnings
