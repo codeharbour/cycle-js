@@ -30,7 +30,7 @@ window.UserSignUpFormView = Backbone.View.extend({
 			},
 			error: function(user, error){
 				// Show the error message somewhere and let the user try again.
-				alert("Error: " + error.code + " " + error.message);
+				Device.alert("Error: " + error.code + " " + error.message);
 			}
 		});
 	}

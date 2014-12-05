@@ -4,8 +4,9 @@ cycle-js
 # Installation
 
     bower install
+    cordova plugin add org.apache.cordova.geolocation
+    cordova plugin add navigator.notification.alert
     cordova platform add android
-    cordova plugin add org.apache.cordova.geolocatio
 
 Create app/scripts/config.js from app/scripts/config_example.js and fill in fields.
 
