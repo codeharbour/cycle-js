@@ -1,27 +1,24 @@
 window.NearestView = Backbone.View.extend({
 
 	template: window['JST']['app/templates/nearest.tpl'],
-	
-	mapLoaded: function(){
-		console.log('map loaded');
+
+	initialize: function(options){
+		Backbone.View.prototype.initialize.apply(this, arguments);
+		//Load the Google map once
+		this.once('mapLoaded', function(){
+			console.log('mapLoaded event');
+			this.haveMap = true;
+			this.addLocationToMap();
+		}, this);
+		this._loadMap();
+	},
+
+	addLocationToMap: function(){
+		console.log('addLocationToMap()');
 		var instance = this;
 		this.getLocation(function(position){
 			instance.drawMap(position);
 		});
-	},
-
-	loadMap: function() {
-
-		var instance = this;
-		window.mapLoaded = function(){
-			instance.mapLoaded();
-		};
-
-	    var script = document.createElement('script');
-	    script.type = 'text/javascript';
-	    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-	    'callback=mapLoaded&key=' + window.config.GOOGLE_API_KEY;
-	    document.body.appendChild(script);
 	},
 
 	addPlaces: function() {
@@ -65,7 +62,7 @@ window.NearestView = Backbone.View.extend({
 			alert("Geolocation is not supported by this browser.");
 		}
 	},
-	
+
 	drawMap: function(position){
 		console.log('drawMap()');
 		var pos = new google.maps.LatLng(
@@ -86,7 +83,25 @@ window.NearestView = Backbone.View.extend({
 	render: function(){
 		this.$el.html(this.template(
 		));
-		this.loadMap();
+		if(this.haveMap){
+			this.addLocationToMap();
+		}
 		return this;
+	},
+
+	_loadMap: function() {
+		console.log('loading map now');
+		var instance = this;
+		window.mapLoaded = function(){
+			console.log('about to trigger event');
+			instance.trigger('mapLoaded');
+		};
+
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+		'callback=mapLoaded&key=' + window.config.GOOGLE_API_KEY;
+		document.body.appendChild(script);
 	}
+
 });

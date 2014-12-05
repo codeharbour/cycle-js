@@ -3,6 +3,7 @@ window.Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'nearest': 'nearest',
+		'rate': 'rate',
 		'user/loginForm': 'userLoginForm',
 		'user/login': 'userLogin',
 		'user/signUpForm': 'userSignUpForm',
@@ -13,7 +14,7 @@ window.Router = Backbone.Router.extend({
 		this.app = options.app;
 		Backbone.Router.prototype.initialize.apply(this, arguments);
 	},
-	
+
 	home: function(){
 		console.log('in home route');
 		if(!this._homeView){
@@ -34,6 +35,16 @@ window.Router = Backbone.Router.extend({
 		this.app.switchPage(this._nearestView);
 	},
 
+	rate: function(){
+		console.log('in rate route');
+		if(!this._rateView){
+			this._rateView = new RateView({
+				el: '#app #rate'
+			});
+		}
+		this.app.switchPage(this._rateView);
+	},
+
 	userLoginForm: function(){
 		console.log('in user login form route');
 		if(!this._userLoginFormView){
@@ -44,11 +55,11 @@ window.Router = Backbone.Router.extend({
 		}
 		this.app.switchPage(this._userLoginFormView);
 	},
-	
+
 	userLogin: function(){
 		console.log('in user login route');
 	},
-	
+
 	userSignUpForm: function(){
 		console.log('in user sign up form route');
 		if(!this._userSignUpFormView){
