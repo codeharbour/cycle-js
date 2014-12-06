@@ -28,6 +28,11 @@ Update config with a valid key for the remote site’s domain.
 
     window.localStorage.clear()
 
+# notes
+
+* Will wait up to 10 seconds to get a geolocation fix.
+* Will use a previous geolocation fix if one has been found in the last 20 seconds.
+
 # todo
 
 * Finish nearest cafe page
