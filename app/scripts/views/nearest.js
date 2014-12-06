@@ -17,6 +17,7 @@ window.NearestView = Backbone.View.extend({
 		console.log('addLocationToMap()');
 		var instance = this;
 		Device.getLocation(function(position){
+			console.log('got location: ', position);
 			instance.drawMap(position);
 		});
 	},
