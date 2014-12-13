@@ -4,7 +4,8 @@ window.Router = Backbone.Router.extend({
 		'': 'home',
 		'nearest': 'nearest',
 		'rate': 'rate',
-		'place/show/:id': 'place',
+		'place/show/:id': 'placeShow',
+		'place/add': 'placeAdd',
 		'user/loginForm': 'userLoginForm',
 		'user/login': 'userLogin',
 		'user/signUpForm': 'userSignUpForm',
@@ -90,18 +91,18 @@ window.Router = Backbone.Router.extend({
 		this.app.switchPage(this._userSignUpFormView);
 	},
 
-	place: function(placeId){
+	placeShow: function(placeId){
 		console.log('in place route: ', placeId);
 		//TODO implement caching here for offline usage
 		var query = new Parse.Query(PlaceModel);
 		query.get(placeId, {
 			success: function(place){
 				// The object was retrieved successfully.
-				this._placeView = new PlaceView({
-					el: '#app #place',
+				this._placeShowView = new PlaceShowView({
+					el: '#app #placeShow',
 					model: place
 				});
-				this.app.switchPage(this._placeView);
+				this.app.switchPage(this._placeShowView);
 			},
 			error: function(object, error){
 				// The object was not retrieved successfully.
@@ -109,6 +110,17 @@ window.Router = Backbone.Router.extend({
 				Device.alert("Error: " + error.code + " " + error.message);
 			}
 		});
-	}
+	},
+	
+	placeAdd: function(){
+		console.log('in add place form route');
+		if(!this._placeAddFormView){
+			this._placeAddFormView = new PlaceAddFormView({
+				el: '#app #placeAdd'
+			});
+		}
+		this.app.switchPage(this._placeAddFormView);
+	},
+
 
 });

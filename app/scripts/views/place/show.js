@@ -1,6 +1,6 @@
-window.PlaceView = Backbone.View.extend({
+window.PlaceShowView = Backbone.View.extend({
 
-	template: window['JST']['app/templates/place.tpl'],
+	template: window['JST']['app/templates/place/show.tpl'],
 
 	events: {
 		'click button#addRating': '_rate'
