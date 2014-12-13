@@ -9,9 +9,13 @@ window.PlaceAddFormView = Backbone.View.extend({
 
 	render: function(){
 		this.$el.html(this.template());
+		var instance = this;
+		this.addLocationToMap(function(){
+			console.log('in map callback');
+		});
 		return this;
 	}
 
 });
 
-_.extend(window.NearestView.prototype, MappableViewConcern);
+_.extend(window.PlaceAddFormView.prototype, MappableViewConcern);

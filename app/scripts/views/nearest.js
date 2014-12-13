@@ -6,15 +6,6 @@ window.NearestView = Backbone.View.extend({
 		Backbone.View.prototype.initialize.apply(this, arguments);
 	},
 
-	addLocationToMap: function(){
-		console.log('addLocationToMap()');
-		var instance = this;
-		Device.getLocation(function(position){
-			console.log('got location: ', position);
-			instance.drawMap(position);
-		});
-	},
-
 	addPlaces: function() {
 		console.log('addPlaces()');
 		var instance = this;
@@ -49,26 +40,13 @@ window.NearestView = Backbone.View.extend({
 		
 	},
 
-	drawMap: function(position){
-		console.log('drawMap()');
-		var pos = new google.maps.LatLng(
-			position.coords.latitude,
-			position.coords.longitude
-		);
-
-		var mapOptions = {
-			center: pos,
-			zoom: 14,
-			zoomControl: true,
-			scaleControl: true
-		};
-		this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		this.addPlaces();
-	},
-
 	render: function(){
 		this.$el.html(this.template());
-		this.addLocationToMap();
+		var instance = this;
+		this.addLocationToMap(function(){
+			console.log('in map callback');
+			instance.addPlaces();
+		});
 		return this;
 	}
 

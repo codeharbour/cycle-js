@@ -42,6 +42,7 @@ window.App = Backbone.View.extend({
 		}
 	},
 
+	//FIXME this should go in the mappable concern
 	_loadMap: function() {
 		console.log('loading map now');
 		var instance = this;
