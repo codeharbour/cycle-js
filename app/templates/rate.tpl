@@ -27,7 +27,7 @@
 
 		<% } %>
 
-		<a href="#place/add" class="btn btn--red">Add somewhere new at this location</a>
+		<a href="#place/addForm" class="btn btn--red">Add somewhere new at this location</a>
 
 	</div>
 

@@ -13,3 +13,5 @@ window.PlaceAddFormView = Backbone.View.extend({
 	}
 
 });
+
+_.extend(window.NearestView.prototype, MappableViewConcern);

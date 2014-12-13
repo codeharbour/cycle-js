@@ -5,6 +5,7 @@ window.Router = Backbone.Router.extend({
 		'nearest': 'nearest',
 		'rate': 'rate',
 		'place/show/:id': 'placeShow',
+		'place/addForm': 'placeAddForm',
 		'place/add': 'placeAdd',
 		'user/loginForm': 'userLoginForm',
 		'user/login': 'userLogin',
@@ -112,15 +113,18 @@ window.Router = Backbone.Router.extend({
 		});
 	},
 	
-	placeAdd: function(){
+	placeAddForm: function(){
 		console.log('in add place form route');
 		if(!this._placeAddFormView){
 			this._placeAddFormView = new PlaceAddFormView({
-				el: '#app #placeAdd'
+				el: '#app #placeAddForm'
 			});
 		}
 		this.app.switchPage(this._placeAddFormView);
 	},
 
+	placeAdd: function(){
+		
+	}
 
 });

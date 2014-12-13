@@ -4,13 +4,6 @@ window.NearestView = Backbone.View.extend({
 
 	initialize: function(options){
 		Backbone.View.prototype.initialize.apply(this, arguments);
-		//Load the Google map once
-		this.once('mapLoaded', function(){
-			console.log('mapLoaded event');
-			this.haveMap = true;
-			this.addLocationToMap();
-		}, this);
-		this._loadMap();
 	},
 
 	addLocationToMap: function(){
@@ -74,27 +67,11 @@ window.NearestView = Backbone.View.extend({
 	},
 
 	render: function(){
-		this.$el.html(this.template(
-		));
-		if(this.haveMap){
-			this.addLocationToMap();
-		}
+		this.$el.html(this.template());
+		this.addLocationToMap();
 		return this;
-	},
-
-	_loadMap: function() {
-		console.log('loading map now');
-		var instance = this;
-		window.mapLoaded = function(){
-			console.log('about to trigger event');
-			instance.trigger('mapLoaded');
-		};
-
-		var script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-		'callback=mapLoaded&key=' + window.config.GOOGLE_API_KEY;
-		document.body.appendChild(script);
 	}
 
 });
+
+_.extend(window.NearestView.prototype, MappableViewConcern);

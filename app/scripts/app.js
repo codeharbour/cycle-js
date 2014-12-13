@@ -14,6 +14,13 @@ window.App = Backbone.View.extend({
 		});
 		Backbone.history.start();
 		
+		//Load the Google map once
+		this.once('mapLoaded', function(){
+			console.log('mapLoaded event');
+			this.haveMap = true;
+		}, this);
+		this._loadMap();
+
 		this._checkLogin();
 	},
 	
@@ -34,5 +41,21 @@ window.App = Backbone.View.extend({
 			});
 		}
 	},
+
+	_loadMap: function() {
+		console.log('loading map now');
+		var instance = this;
+		window.mapLoaded = function(){
+			console.log('about to trigger event');
+			instance.trigger('mapLoaded');
+		};
+
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+		'callback=mapLoaded&key=' + window.config.GOOGLE_API_KEY;
+		document.body.appendChild(script);
+	}
+
 
 });
