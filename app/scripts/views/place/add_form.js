@@ -12,8 +12,19 @@ window.PlaceAddFormView = Backbone.View.extend({
 		var instance = this;
 		this.addLocationToMap(function(){
 			console.log('in map callback');
+			instance.addMarker();
 		});
 		return this;
+	},
+
+	addMarker: function(){
+		var pos = new google.maps.LatLng(this.position.coords.latitude, this.position.coords.longitude);
+		var myMarker = new google.maps.Marker({
+			map: this.map,
+			position: pos,
+			label: 'You are here',
+			draggable: true
+		});
 	}
 
 });

@@ -5,15 +5,16 @@ window.MappableViewConcern = {
 		var instance = this;
 		Device.getLocation(function(position){
 			console.log('got location: ', position);
-			instance.drawMap(position, cb);
+			instance.position = position;
+			instance.drawMap(cb);
 		});
 	},
 
-	drawMap: function(position, cb){
+	drawMap: function(cb){
 		console.log('drawMap()');
 		var pos = new google.maps.LatLng(
-			position.coords.latitude,
-			position.coords.longitude
+			this.position.coords.latitude,
+			this.position.coords.longitude
 		);
 	
 		var mapOptions = {
