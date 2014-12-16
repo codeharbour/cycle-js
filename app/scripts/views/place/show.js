@@ -13,6 +13,7 @@ window.PlaceShowView = Backbone.View.extend({
 		return this;
 	},
 
+	//FIXME move this to the model
 	_rate: function(){
 		console.log('_rate()');
 
@@ -35,7 +36,7 @@ window.PlaceShowView = Backbone.View.extend({
 				Device.alert('Thank you for your rating');
 				window.location = "#"	//FIXME use the router here
 			},
-			error: function(gameScore, error){
+			error: function(stuff, error){
 				// Execute any logic that should take place if the save fails.
 				// error is a Parse.Error with an error code and message.
 				Device.alert('Failed to create rating, with error code: ' + error.message);

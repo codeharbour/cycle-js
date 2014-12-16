@@ -34,17 +34,6 @@
 					<option value="4">4 stars</option>
 					<option value="5">5 stars</option>
 				</select>
-
-				<div class="rating">
-					<div class="stars">
-						<span class="star-5">&#x2605;</span>
-						<span class="star-4">&#x2605;</span>
-						<span class="star-3">&#x2605;</span>
-						<span class="star-2">&#x2605;</span>
-						<span class="star-1">&#x2605;</span>
-					</div>
-				</div>
-
 			</div>
 
 			<div class="form__group">
@@ -53,7 +42,7 @@
 				<textarea name="cafe-comment" id="cafe-comment" class="form__control form__control--full" rows="10"></textarea>
 			</div>
 
-			<input type="submit" class="btn btn--red" value="Add café">
+			<button id="addPlace" type="submit" class="btn btn--red">Add café</button>
 
 		</div>
 	</section>
