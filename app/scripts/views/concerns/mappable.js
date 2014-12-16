@@ -5,7 +5,7 @@ window.MappableViewConcern = {
 		var instance = this;
 		Device.getLocation(function(position){
 			console.log('got location: ', position);
-			instance.position = position;
+			instance._updatePosition(position.coords.latitude, position.coords.longitude);
 			instance.drawMap(cb);
 		});
 	},
@@ -13,8 +13,8 @@ window.MappableViewConcern = {
 	drawMap: function(cb){
 		console.log('drawMap()');
 		var pos = new google.maps.LatLng(
-			this.position.coords.latitude,
-			this.position.coords.longitude
+			this.position.get('latitude'),
+			this.position.get('longitude')
 		);
 	
 		var mapOptions = {
@@ -25,6 +25,15 @@ window.MappableViewConcern = {
 		};
 		this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		cb();
+	},
+
+	_updatePosition: function(lat, long){
+		if(!this.position){
+			this.position = new PositionModel();
+		}
+		this.position.set('latitude', lat);
+		this.position.set('longitude', long);
+		console.log('position now: ', this.position.attributes);
 	}
 
 };
