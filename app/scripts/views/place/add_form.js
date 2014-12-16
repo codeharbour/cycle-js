@@ -12,6 +12,7 @@ window.PlaceAddFormView = Backbone.View.extend({
 	},
 
 	render: function(){
+		console.log('addForm render()');
 		this.$el.html(this.template());
 		var instance = this;
 		this.addLocationToMap(function(){
