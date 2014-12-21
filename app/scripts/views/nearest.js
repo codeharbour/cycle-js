@@ -4,7 +4,7 @@ window.NearestView = Backbone.View.extend({
 
 	initialize: function(options){
 		Backbone.View.prototype.initialize.apply(this, arguments);
-		this.places = new NearestPlacesCollection()
+		this.places = new NearestPlacesCollection();
 	},
 
 	addPlaces: function() {
@@ -31,6 +31,7 @@ window.NearestView = Backbone.View.extend({
 	},
 
 	_fetchCollection: function(){
+		this.places.position = this.position;
 		var instance = this;
 		this.places.fetch({
 			success: function(collection){
