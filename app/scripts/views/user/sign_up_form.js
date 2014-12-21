@@ -1,6 +1,6 @@
 window.UserSignUpFormView = Backbone.View.extend({
 
-	template: window['JST']['app/templates/user/sign_up_form.tpl'],
+	template: window.JST['app/templates/user/sign_up_form.tpl'],
 
 	events: {
 		'click button#signUp': '_signUp'

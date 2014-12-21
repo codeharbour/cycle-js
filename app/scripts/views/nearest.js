@@ -1,6 +1,6 @@
 window.NearestView = Backbone.View.extend({
 
-	template: window['JST']['app/templates/nearest.tpl'],
+	template: window.JST['app/templates/nearest.tpl'],
 
 	initialize: function(options){
 		Backbone.View.prototype.initialize.apply(this, arguments);
@@ -36,7 +36,7 @@ window.NearestView = Backbone.View.extend({
 			success: function(collection){
 				instance._fetchCollectionSuccess();
 			},
-			error: function(error) {
+			error: function(collection, error){
 				console.log("Error: " + error.code + " " + error.message);
 			}
 		});
@@ -45,13 +45,16 @@ window.NearestView = Backbone.View.extend({
 	_fetchCollectionSuccess: function(){
 		console.log('fetch collection sucess');
 		this.addPlaces();
-		if(!this._placeListView){
-			this._placeListView = new PlaceListView({
-				el: 'ol.cafe-list',
-				collection: this.places
+		var entry = this.$('ol.cafe-list');
+		entry.empty();
+		this.places.each(function(model){
+			var placeSummaryView = new PlaceSummaryView({
+				//el: 'ol.cafe-list',
+				model: model
 			});
-		}
-		this._placeListView.render();
+			placeSummaryView.render();
+			entry.append(placeSummaryView.el);
+		});
 	},
 
 	render: function(){

@@ -1,6 +1,6 @@
 window.RateView = Backbone.View.extend({
 
-	template: window['JST']['app/templates/rate.tpl'],
+	template: window.JST['app/templates/rate.tpl'],
 
 	initialize: function(){
 		Backbone.View.prototype.initialize.apply(this, arguments);

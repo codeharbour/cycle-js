@@ -1,6 +1,6 @@
 window.PlaceAddFormView = Backbone.View.extend({
 
-	template: window['JST']['app/templates/place/add_form.tpl'],
+	template: window.JST['app/templates/place/add_form.tpl'],
 
 	events: {
 		'click button#addPlace': '_add'

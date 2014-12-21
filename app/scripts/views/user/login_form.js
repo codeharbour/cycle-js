@@ -1,6 +1,6 @@
 window.UserLoginFormView = Backbone.View.extend({
 
-	template: window['JST']['app/templates/user/login_form.tpl'],
+	template: window.JST['app/templates/user/login_form.tpl'],
 
 	events: {
 		'click button[data-url]': '_route',
