@@ -58,7 +58,7 @@
 
 					</div>
 				</div>
-				<div class="cafe__distance">? miles</div>
+				<div class="cafe__distance"><%- (Math.round(model.distanceFrom(position) * 100) / 100) %> km</div>
 			</div>
 		</a>
 	</article>

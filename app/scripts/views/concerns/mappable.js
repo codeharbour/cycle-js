@@ -12,13 +12,8 @@ window.MappableViewConcern = {
 
 	drawMap: function(cb){
 		console.log('drawMap()');
-		var pos = new google.maps.LatLng(
-			this.position.get('latitude'),
-			this.position.get('longitude')
-		);
-	
 		var mapOptions = {
-			center: pos,
+			center: this.position.asGoogleMapsLatLng(),
 			zoom: 14,
 			zoomControl: true,
 			scaleControl: true
