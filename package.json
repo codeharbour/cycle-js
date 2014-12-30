@@ -24,14 +24,14 @@
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.4.0",
-    "divshot-cli": "^1.4.0"
+    "divshot-cli": "^1.4.3",
+    "ios-sim": "^3.1.1",
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
     "cordova": "^4.1.2",
-    "ios-sim": "^3.1.1",
     "grunt-contrib-jst": "^0.6.0"
   }
 }
