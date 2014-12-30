@@ -2,6 +2,7 @@
   "name": "cycle-js",
   "private": true,
   "dependencies": {
-    "backbone": "~1.1.2"
+    "backbone": "~1.1.2",
+    "moment": "~2.8.4"
   }
 }

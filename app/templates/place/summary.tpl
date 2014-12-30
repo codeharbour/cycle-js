@@ -1,6 +1,6 @@
 <li>
 	<article class="cafe">
-		<a class="details-link" href="">
+		<a class="details-link" href="#">
 			<div class="cafe__overview">
 				<div class="more-button">&raquo;</div>
 				<h2 class="cafe__title"><%- model.get('name') %></h2>
@@ -61,5 +61,10 @@
 				<div class="cafe__distance"><%- (Math.round(model.distanceFrom(position) * 100) / 100) %> km</div>
 			</div>
 		</a>
+		<div class="cafe__details">
+		<div class="close-button"><a href="#">&times;</a></div>
+			<h2 class="cafe__title"><%- model.get('name') %></h2>
+			<ul class="reviews"></ul>
+		</div>
 	</article>
 </li>
