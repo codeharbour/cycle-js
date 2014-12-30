@@ -1,5 +1,5 @@
 <li class="review">
-	<span class="review__user">unknown user</span>
+	<span class="review__user">Unknown</span>
 	<div class="rating">
 		<div class="stars">
 			<% if(model.get('stars') >= 5){ %>

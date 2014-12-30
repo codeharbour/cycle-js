@@ -3,7 +3,9 @@ window.PlaceSummaryView = Backbone.View.extend({
 	template: window.JST['app/templates/place/summary.tpl'],
 
 	events:{
-		'click .details-link': '_details'
+		'click .details-link': '_details',
+		'click .close-button': '_closeRatings',
+		'click #overlay': '_closeRatings'
 	},
 
 	initialize: function(options){
@@ -25,14 +27,13 @@ window.PlaceSummaryView = Backbone.View.extend({
 
 	_details: function(e){
 		console.log('_details');
-		console.log(e.currentTarget);
-		$('body').addClass('fixed-page').append('<div id="overlay" class="overlay"></div>');
 		e.stopPropagation();
 		e.preventDefault();
+		$('body').addClass('fixed-page')
+		this.$el.append('<div id="overlay" class="overlay"></div>');
 
 		var entry = this.$('.reviews');
 		entry.empty();
-		var instance = this;
 		this.model.ratings.each(function(model){
 			var showRatingView = new ShowRatingView({
 				model: model
@@ -40,7 +41,16 @@ window.PlaceSummaryView = Backbone.View.extend({
 			showRatingView.render();
 			entry.append(showRatingView.el);
 		});
+		this.$('.cafe__details').addClass('show');
+	},
 
+	_closeRatings: function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		$('body').removeClass('fixed-page');
+		this.$('.cafe__details').removeClass('show');
+		$('#overlay').remove('#overlay');
 	}
+
 
 });
