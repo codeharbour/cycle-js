@@ -25,7 +25,7 @@
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.4.0",
     "divshot-cli": "^1.4.3",
-    "ios-sim": "^3.1.1",
+    "ios-sim": "^3.1.1"
   },
   "engines": {
     "node": ">=0.10.0"

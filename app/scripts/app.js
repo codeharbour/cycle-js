@@ -26,10 +26,10 @@ window.App = Backbone.View.extend({
 	
 	switchPage: function(view){
 		console.log('switchPage()');
-		var inactive = $('section.active')
-		inactive.attr('class', 'inactive')
+		var inactive = $('section.active');
+		inactive.attr('class', 'inactive');
 		view.render();
-		view.$el.attr('class', 'active')
+		view.$el.attr('class', 'active');
 	},
 	
 	_checkLogin: function(){

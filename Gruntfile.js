@@ -346,7 +346,7 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          "app/scripts/templates.js": ["app/templates/**/*.tpl"]
+          'app/scripts/templates.js': ['app/templates/**/*.tpl']
         }
       }
     }
