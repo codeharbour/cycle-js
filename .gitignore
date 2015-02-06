@@ -5,7 +5,6 @@ bower_components
 .DS_Store
 platforms/*
 plugins/*
-www/*
 app/scripts/config.js
 app/scripts/templates.js
 .divshot-cache

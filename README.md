@@ -5,12 +5,15 @@ cycle-js
 
     npm install
     bower install
+
+Create app/scripts/config.js from app/scripts/config_example.js and fill in fields.
+
+    grunt
     cordova plugin add org.apache.cordova.geolocation
     cordova plugin add org.apache.cordova.dialogs
     cordova platform add android
     cordova platform add ios
 
-Create app/scripts/config.js from app/scripts/config_example.js and fill in fields.
 
 # Building for apps
 
@@ -24,7 +27,6 @@ Update config with a valid key for the remote site’s domain.
 
     grunt build
     divshot push --app fixie-app
-
 
 # logout
 
