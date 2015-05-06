@@ -20,8 +20,6 @@ window.App = Backbone.View.extend({
 			this.haveMap = true;
 		}, this);
 		this._loadMap();
-
-		this._checkLogin();
 	},
 	
 	switchPage: function(view){
@@ -32,16 +30,6 @@ window.App = Backbone.View.extend({
 		view.$el.attr('class', 'active');
 	},
 	
-	_checkLogin: function(){
-		var currentUser = UserModel.current();
-		if(!currentUser){
-			console.log('not logged in');
-			this.router.navigate('user/loginForm',{
-				trigger: true
-			});
-		}
-	},
-
 	//FIXME this should go in the mappable concern
 	_loadMap: function() {
 		console.log('loading map now');
